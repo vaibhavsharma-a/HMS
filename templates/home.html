@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HMS</title>
+  <script src="http://unpkg.com/htmx.org"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+  <h1 class="text-2xl font-bold text-center mt-4 hover:shadow-xl hover:bg-blue-200 py-4">Inventory Management</h1>
+
+  <div class="container mx-auto p-4 flex">
+    <div class="w-2/3">
+      <h1 class="text-xl font-semibold text-center mt-4 mb-10 mr-48">Stock Table</h1>
+      
+
+     
+
+      <!--!making inventory table to display the results-->
+      <div class="overflow-y-auto h-80 border border-gray-300 bg-gray-200 rounded hover:shadow-xl mt-8 w-3/4">
+        <table class="border-collapse table-auto w-full border bg-gray-300 hover:shadow-2xl">
+          <thead class="sticky top-0 z-10 bg-gray-600">
+            <tr>
+              <th class="sticky top-0 z-10 border border-gray-900 px-4 py-2 text-white text-left cursor-pointer">Article ID</th>
+              <th class="sticky top-0 z-10 border border-gray-900 px-4 py-2 text-white text-left cursor-pointer">Name</th>
+              <th class="sticky top-0 z-10 border border-gray-900 px-4 py-2 text-white text-left cursor-pointer">Quantity</th>
+              <th class="sticky top-0 z-10 border border-gray-900 px-4 py-2 text-white text-left cursor-pointer">Price</th>
+            </tr>
+          </thead>
+          <tbody id="inventory-list" class="text-sm font-semibold">
+  
+          </tbody>
+        </table>
+      </div>
+
+       <!--!making a button to fetch the data from the table-->
+       <div class="text-left mt-8"> 
+        <button hx-get="/inventory"
+        hx-target="#inventory-list"
+        hx-trigger="click"
+        class="transition ease-in-out delay-750 bg-red-500 hover:bg-green-700 text-white hover:text-black hover:shadow-2xl font-bold py-2 px-4 rounded-full">
+          Fetch Inventory</button>
+      </div>
+      
+    </div>
+
+    <div class="w-1/3 ml-4">
+      <h1 class="text-xl font-semibold text-right mt-4 mb-10 mr-48">Add Stock</h1>
+
+      <form hx-post="/inventory/add" hx-target="#inventory-list" hx-swap="beforeend" class="bg-white hover:bg-gray-100 p-4 rounded-lg hover:shadow-2xl">
+        <div class="mb-4">
+            <label for="artical_id" class="block text-sm font-bold mb-2">Article ID</label>
+            <input type="text" id="artical_id" name="artical_id" class="border-2 border-gray-300 hover:border-green-300 rounded-lg w-full px-3 py-2" placeholder="Enter the Art Number">
+        </div>
+        <div class="mb-4">
+            <label for="name" class="block text-sm font-bold mb-2">Name</label>
+            <input type="text" id="name" name="name" class="border-2 border-gray-300 hover:border-green-300 rounded-lg w-full px-3 py-2" placeholder="Enter the Name">
+        </div>
+        <div class="mb-4">
+            <label for="quantity" class="block text-sm font-bold mb-2">Quantity</label>
+            <input type="number" id="quantity" name="quantity" class="border-2 border-gray-300 hover:border-green-300 rounded-lg w-full px-3 py-2" placeholder="Enter the Qunatity">
+        </div>
+        <div class="mb-4">
+            <label for="price" class="block text-sm font-bold mb-2">Price</label>
+            <input type="number" id="price" name="price" class="border-2 border-gray-300 hover:border-green-300 rounded-lg w-full px-3 py-2" placeholder="₹ Enter the price">
+        </div>
+        <button type="submit" class="bg-green-500 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full ml-32">Add Inventory</button>
+      </form>
+
+
+    </div>
+    
+
+  </div>
+  
+</body>
+</html>
