@@ -7,10 +7,10 @@ import (
 type Inventory struct {
 	gorm.Model
 
-	ArticalId string  `json:"artical_id" gorm:"unique"`
-	Name      string  `json:"name"`
-	Quantity  int32   `json:"quantity"`
-	Price     float64 `json:"price"`
+	ArticalId string  `json:"artical_id" gorm:"column:artical_id;unique"`
+	Name      string  `json:"name" gorm:"column:name"`
+	Quantity  int32   `json:"quantity" gorm:"column:quantity"`
+	Price     float64 `json:"price" gorm:"column:price"`
 }
 
 

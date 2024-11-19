@@ -68,7 +68,7 @@ func main() {
 
 	//todo: Passing the aritcle_id as body 
 	e.GET("/inventory", handlers.GetAllInventory(db))
-	e.GET("/inventory/:artical_id", handlers.GetInventoryById(db)) //? passing the aricle_id as url param
+	e.GET("/inventory/", handlers.GetInventoryById(db))
 	e.POST("/inventory/add", handlers.CreateNewInventory(db))
 	e.PUT("/inventory",handlers.UpdateInventoryById(db))
 	e.DELETE("/inventory/:artical_id",handlers.DeleteFromInventoryById(db)) //? passing the aricle_id as url param
